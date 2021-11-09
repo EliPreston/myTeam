@@ -10,39 +10,45 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
 
     
 </head>
 <body>
 
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
+        <a href="#x" class="btn orange modal-trigger">Login</a>
 
-    <!-- Modal Trigger -->
-    <button data-target="modal1" class="btn modal-trigger">Modal</button>
-    
+        <div class="modal" id="x">
+        <div class="modal-content">
+            <!-- <h4>Login</h4> -->
+            <form action="">
+            <div class="input-field">
+                <i class="material-icons prefix">person</i>
+                <input type="text" id="username">
+                <label for="username">Username...</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">password</i>
+                <input type="password" id="password">
+                <label for="password">Password...</label>
+            </div>
+            </form>
+        <div class="modal-footer">
+            <a href="#" class="modal-close btn orange" onclick="checkLogin()">Login</a>
+        </div>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="bad_auth.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems, options);
+        $(document).ready(function () {
+            $(".modal").modal();
         });
-    
     </script>
+
 </body>
 </html>
