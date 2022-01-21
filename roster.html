@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>IA Project ~ myTeam</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Compiled and minified CSS & Import Google Icon Font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    
+
+
+
+
+    
+</head>
+<body>
+
+        <div class="row">
+            <a class="btn red" onclick="createTable()" style="cursor: pointer;">Create Table</a> 
+            <a class="btn blue" onclick="getData()" style="cursor: pointer;">Get Data</a> 
+            <a href="#addPlayerForm" class="btn green darken-4 modal-trigger customizeBtn">Add Player</a>
+            
+            <div class="modal" id="addPlayerForm">
+                <div class="modal-content">
+
+                    <h4>Add Player Form</h4>
+                    <form action="" id="addPlayerForm">
+                    <div class="input-field">
+                        <i class="material-icons prefix">person</i>
+                        <input type="text" id="playerName">
+                        <label for="playerName">Player Full Name...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">recent_actors</i>
+                        <input type="text" id="playerPosition">
+                        <label for="playerPosition">Position...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">query_builder</i>
+                        <input type="text" id="playerAge">
+                        <label for="playerAge">Age...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">contact_mail</i>
+                        <input type="text" id="playerContactInfo">
+                        <label for="playerContactInfo">Email...</label>
+                    </div>
+                    </form>
+                    <div class="modal-footer">
+                        <a href="#" class="modal-close btn orange" onclick="addPlayer()">Add Player to Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div>
+            <div id="table"></div>
+            <div>
+                <table id="playeTable">
+                    <thead>
+                        <tr id="tableHeaders">
+                            <th>Age</th>
+                            <th>Contact Information</th>
+                            <th>Name</th>
+                            <th>Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="playerTableBody">
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        
+        
+
+        
+
+        
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+        <script src='/IA/myTeam.github.io/script/roster.js'></script>
+        <link rel='stylesheet' type='text/css' media='screen' href='style/roster.css'>
+
+</body>
+</html>
+    
+
+</body>
+</html>

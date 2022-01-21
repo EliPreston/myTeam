@@ -5,50 +5,92 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>IA Project ~ myTeam</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
      <!--Import Google Icon Font-->
      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+     <link rel='stylesheet' type='text/css' media='screen' href='style/index.css'>
 
 
     
 </head>
 <body>
 
+<!--  -->
+    <!-- https://www.youtube.com/watch?v=aN1LnNq4z54&list=PL4cUxeGkcC9jUPIes_B8vRjn1_GaplOPQ -->
+<!--  -->
 
-        <a href="#x" class="btn orange modal-trigger">Login</a>
+        <div class="row">
+            <div>
+                <a href="#loginForm" class="btn blue darken-4 modal-trigger customizeBtn col s1">Login</a>
 
-        <div class="modal" id="x">
-        <div class="modal-content">
-            <!-- <h4>Login</h4> -->
-            <form action="">
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <input type="text" id="username">
-                <label for="username">Username...</label>
+                <div class="modal" id="loginForm">
+                    <div class="modal-content">
+                        <!-- <h4>Login</h4> -->
+                        <form action="" id="loginForm">
+                        <div class="input-field">
+                            <i class="material-icons prefix">mail</i>
+                            <input type="text" id="emailL">
+                            <label for="emailL">Email...</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">password</i>
+                            <input type="password" id="passwordL">
+                            <label for="passwordL">Password...</label>
+                        </div>
+                        </form>
+                        <div class="modal-footer">
+                            <a href="#" class="modal-close btn orange" onclick="checkLogin()">Login</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">password</i>
-                <input type="password" id="password">
-                <label for="password">Password...</label>
+            <div>
+                <a href="#signupForm" class="btn blue darken-4 modal-trigger customizeBtn col s1">Signup</a>
+                
+                <div class="modal" id="signupForm">
+                    <div class="modal-content">
+                        <!-- <h4>Signup</h4> -->
+                        <form action="" id="signupForm">
+                        <!-- <div class="input-field">
+                            <i class="material-icons prefix">person</i>
+                            <input type="text" id="usernameS">
+                            <label for="usernameS">Username...</label>
+                        </div> -->
+                        <div class="input-field">
+                            <i class="material-icons prefix">contact_mail</i>
+                            <input type="text" id="emailS">
+                            <label for="emailS">Email...</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="material-icons prefix">password</i>
+                            <input type="password" id="passwordS">
+                            <label for="passwordS">Password...</label>
+                        </div>
+                        </form>
+                        <div class="modal-footer">
+                            <a href="#" class="modal-close btn orange" onclick="createUser()">Signup</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </form>
-        <div class="modal-footer">
-            <a href="#" class="modal-close btn orange" onclick="checkLogin()">Login</a>
+            <a href="#" class="btn blue darken-4 modal-trigger customizeBtn col s1" onclick="signOut()">SignOut</a>
         </div>
-        </div>
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="bad_auth.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".modal").modal();
-        });
-    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+    <script src='/IA/myTeam.github.io/script/index.js'></script>
+
 
 </body>
 </html>
