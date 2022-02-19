@@ -9,75 +9,203 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     <!--Import Google Icon Font-->
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-     <link rel='stylesheet' type='text/css' media='screen' href='style/index.css'>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel='stylesheet' type='text/css' media='screen' href='style/index.css'>
 
 
     
 </head>
 <body>
 
-<!--  -->
-    <!-- https://www.youtube.com/watch?v=aN1LnNq4z54&list=PL4cUxeGkcC9jUPIes_B8vRjn1_GaplOPQ -->
-<!--  -->
+    <!-- https://www.canva.com/colors/color-palettes/window-tide/ -->
 
-        <div class="row">
-            <div>
-                <a href="#loginForm" class="btn blue darken-4 modal-trigger customizeBtn col s1">Login</a>
-
-                <div class="modal" id="loginForm">
-                    <div class="modal-content">
-                        <!-- <h4>Login</h4> -->
-                        <form action="" id="loginForm">
-                        <div class="input-field">
-                            <i class="material-icons prefix">mail</i>
-                            <input type="text" id="emailL">
-                            <label for="emailL">Email...</label>
-                        </div>
-                        <div class="input-field">
-                            <i class="material-icons prefix">password</i>
-                            <input type="password" id="passwordL">
-                            <label for="passwordL">Password...</label>
-                        </div>
-                        </form>
-                        <div class="modal-footer">
-                            <a href="#" class="modal-close btn orange" onclick="checkLogin()">Login</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <a href="#signupForm" class="btn blue darken-4 modal-trigger customizeBtn col s1">Signup</a>
+    <nav class="cyan darken-3">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo right" style="padding-right: 2%;" id="teamLogoName"><i class="material-icons right">ac_unit</i></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
                 
-                <div class="modal" id="signupForm">
-                    <div class="modal-content">
-                        <!-- <h4>Signup</h4> -->
-                        <form action="" id="signupForm">
-                        <!-- <div class="input-field">
-                            <i class="material-icons prefix">person</i>
-                            <input type="text" id="usernameS">
-                            <label for="usernameS">Username...</label>
-                        </div> -->
-                        <div class="input-field">
-                            <i class="material-icons prefix">contact_mail</i>
-                            <input type="text" id="emailS">
-                            <label for="emailS">Email...</label>
-                        </div>
-                        <div class="input-field">
-                            <i class="material-icons prefix">password</i>
-                            <input type="password" id="passwordS">
-                            <label for="passwordS">Password...</label>
-                        </div>
-                        </form>
-                        <div class="modal-footer">
-                            <a href="#" class="modal-close btn orange" onclick="createUser()">Signup</a>
-                        </div>
-                    </div>
+                <li><a href="#loginForm" class="btn blue darken-1 modal-trigger customizeBtn col s1">Sign In</a></li>
+                <li><a href="#playerSignupForm" class="btn blue darken-1 modal-trigger">Signup (Player)</a></li>
+                <li><a href="#coachSignupForm" class="btn blue darken-1 modal-trigger">Signup (Coach)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav cyan darken-2" id="mobile-demo">
+        
+        <li><a href="#loginForm" class="btn blue darken-1 modal-trigger customizeBtn col s1">Sign In</a></li>
+        <li><a href="#playerSignupForm" class="btn blue darken-2 modal-trigger">Signup (Player)</a></li>
+        <li><a href="#coachSignupForm" class="btn blue darken-2 modal-trigger">Signup (Coach)</a></li>
+    </ul>
+
+
+    <div class="slider" height="50%">
+        <ul class="slides">
+            <li>
+            <img src="local images/rink.jpeg"> <!-- random image -->
+            <div class="caption center-align">
+                <h3>Welcome to My-Team!</h3>
+                <h5 class="light grey-text text-lighten-3">Your one stop for everything hockey management.</h5>
+            </div>
+            </li>
+            <li>
+            <img src="local images/player.jpeg"> <!-- random image -->
+            <div class="caption left-align">
+                <h3>See your roster & all relevant information!</h3>
+                <h5 class="light grey-text text-lighten-3">Names, positions, contacts, etc.</h5>
+            </div>
+            </li>
+            <li>
+            <img src="local images/skates.jpeg"> <!-- random image -->
+            <div class="caption right-align">
+                <h3>Upload media for your team!</h3>
+                <h5 class="light grey-text text-lighten-3">Including images, & PDFs!</h5>
+            </div>
+            </li>
+            <li>
+            <img src="local images/teamCircle.jpeg"> <!-- random image -->
+            <div class="caption center-align">
+                <h3>Keep track of events!</h3>
+                <h5 class="light grey-text text-lighten-3">Games, practices, team events, etc.</h5>
+            </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container row">
+        <div class="col s6">
+            <h4 class="">What is My-Team?</h4>
+            <span>This website is a tool for coaches and players alike to stay updated on their team. From uploading team files and displaying the team roster in detail, this tool is perfect for managing your team.</span>
+        </div>
+
+        <div class="col s6">
+            <h4 class="">How do I use My-Team?</h4>
+            <span>If you are a coach, the first thing you want to do is signup as a coach. After inputting the information requested, your team has just been created. From here, you can let your players know to come to the website and signup, selecting your team, and again providing the requested information. It's as simple as that. </span>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+        <div class="modal" id="loginForm">
+            <div class="modal-content">
+                <h4>Sign In</h4>
+                <form action="" id="loginForm">
+                <div class="input-field">
+                    <i class="material-icons prefix">mail</i>
+                    <input type="text" id="emailL">
+                    <label for="emailL">Email...</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">password</i>
+                    <input type="password" id="passwordL">
+                    <label for="passwordL">Password...</label>
+                </div>
+                </form>
+                <div class="modal-footer">
+                    <a href="#" class="modal-close btn orange" onclick="signIn()">Sign In</a>
                 </div>
             </div>
-            <a href="#" class="btn blue darken-4 modal-trigger customizeBtn col s1" onclick="signOut()">SignOut</a>
         </div>
+
+        <div class="modal" id="playerSignupForm">
+            <div class="modal-content">
+                <h4>Player Signup</h4>
+                <form action="" id="playerSignupForm">
+                <div class="input-field">
+                    <i class="material-icons prefix">account_box</i>
+                    <input type="text" id="namePS">
+                    <label for="namePS">Name...</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input type="text" id="emailPS">
+                    <label for="emailPS">Email...</label>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">password</i>
+                    <input type="password" id="passwordPS">
+                    <label for="passwordPS">Password...</label>
+                </div>
+                <div class="input-field">
+                    <select id="agePS" class="browser-default"></select>
+                </div>
+                
+                <div class="input-field">
+                    <select id="numberPS" class="browser-default"></select>
+                </div>
+                <div class="input-field">
+                    <select id="positionPS" class="browser-default">
+                        <option value="" disabled selected>Indicate the position you play...</option>
+                        <option value="Left Wing">Left Wing</option>
+                        <option value="Center">Center</option>
+                        <option value="Right Wing">Right Wing</option>
+                        <option value="Left Defense">Left Defense</option>
+                        <option value="Right Defense">Right Defense</option>
+                        <option value="Goalie">Goalie</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="teamSelectDiv" class="browser-default"></select>
+                </div>
+                </form>
+
+                <div class="modal-footer">
+                    <a href="#" class="modal-close btn orange" onclick="playerSignUp()">Signup</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="coachSignupForm">
+            <div class="modal-content">
+                <h4>Create New Team</h4>
+                <form action="" id="coachSignupForm">
+                    <h6>Coach Information</h6>
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_box</i>
+                        <input type="text" id="coachName">
+                        <label for="coachName">Name...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">contact_mail</i>
+                        <input type="text" id="emailCS">
+                        <label for="emailCS">Email...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">password</i>
+                        <input type="password" id="passwordCS">
+                        <label for="passwordCS">Password...</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">supervisor_account</i>
+                        <input type="text" id="teamName">
+                        <label for="teamName">Your Team Name...</label>
+                    </div>
+                    <div>
+
+                        <!-- <label class="btn green" for="imageFileBtn" style="cursor: pointer;">Upload Image/Any File</label> -->
+                        <p class="blue-text darken-4">Upload Team Photo</p>
+                        <input type="file" accept="image/*" name="image" id="teamPhoto">
+                    </div>
+
+                </form>
+
+                <div class="modal-footer">
+                    
+                    <a href="#" class="modal-close btn orange" onclick="coachSignUp()">Signup</a>
+                </div>
+            </div>
+        </div>
+        
+
+            
 
 
 

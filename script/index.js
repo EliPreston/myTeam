@@ -1,25 +1,13 @@
-// function getTimeEpoch() {
-    //     x = new Date().getTime().toString(); 
-    //     console.log(x)                            
-    // }
-    
-    
-    $(document).ready(function () {
-        $(".modal").modal();
-    });
-    
-    
-    // const users = {
-    //     user1:"password1",
-    //     user2:"password2",
-    //     user3:"password3",
-    //     user4:"password4",
-    //     user5:"password5",
-    //     user6:"password6"
-    // }
-    // for (let i in users) {
-    //     console.log(i + " " +users[i])
-    // } 
+
+$(document).ready(function () {
+    $(".modal").modal();
+    $('.dropdown-trigger').dropdown();
+    $('.sidenav').sidenav();
+    $('.slider').slider();
+    $('.materialboxed').materialbox();
+
+});
+
 
 
 // Set the configuration for your app
@@ -39,34 +27,307 @@ var database = firebase.database();
 var storage = firebase.storage();
 var storageRef = storage.ref(); //references the storage bucket of my firebase system
 
+
+var coachVerification = false
+var currentTeam = ""
+
+
 firebase.auth().onAuthStateChanged((user) => {
-    console.log(user)
+    // console.log(user)
+
+    var gettingData = firebase.database().ref('teams/');
+    
+
+    gettingData.on('value', (snapshot) => {
+        
+        const data = snapshot.val();
+        // console.log(data)
+        
+        var keys = Object.getOwnPropertyNames(data)
+        var teamSelectDiv = document.getElementById('teamSelectDiv')
+        var insertTeamSelect = `<option value="" disabled selected>Select your team...</option>`
+        
+        insertTeamSelect = insertTeamSelect + content
+        for (key in keys) {
+            var nameTEAM = keys[key]
+            var content = `<option value="${nameTEAM}">${nameTEAM}</option>`
+            insertTeamSelect += content
+        }
+        teamSelectDiv.innerHTML = insertTeamSelect   
+
+        
+        var numberSelectDiv = document.getElementById('numberPS')
+        var ageSelectDiv = document.getElementById('agePS')
+        
+
+        var insertPlayerNumberSelect = `<option value="" disabled selected>Select your player number...</option>`
+        var insertPlayerAgeSelect = `<option value="" disabled selected>Age...</option>`
+
+
+    
+
+
+        for (i = 1; i < 100; i++) {
+            
+            var content = `<option value="${i}">${i}</option>`
+            var content2 = `<option value="${i+29}">${i+29}</option>`
+
+            insertPlayerNumberSelect += content
+            insertPlayerAgeSelect += content
+        }
+
+        numberSelectDiv.innerHTML = insertPlayerNumberSelect
+        ageSelectDiv.innerHTML = insertPlayerAgeSelect
+
+
+    });
+
+    
     
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      var uid = user.uid;
-      console.log(uid)
-      // ...
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        console.log(uid)
+
+        var gettingData = firebase.database().ref('teams/');
+
+        gettingData.on('value', (snapshot) => {
+            
+            const data = snapshot.val();
+            // console.log(data)
+            
+            var keys = Object.getOwnPropertyNames(data)
+            for (key in keys) {
+                // console.log(uid)
+
+                // Name of current team
+                var nameTEAM = keys[key]
+
+                // js object for the team --> contains head coach object and player object
+                var coachAtTeam = data[nameTEAM]
+
+                // Gets the access key for the head coach object
+                var coachKey = Object.getOwnPropertyNames(coachAtTeam)
+                var coachAccess = coachKey[0]
+                
+                // js object for the coach --> contains contact info, name, & userID elements
+                var coachKey2 = data[nameTEAM][coachAccess]
+                // console.log(coachKey2)
+
+                var coachKey3 = Object.getOwnPropertyNames(coachKey2)
+                var coachID = coachKey3[2]
+
+
+                if (coachKey2[coachID] == uid) {
+                    console.log(nameTEAM)
+                    console.log("coach of current team is signed in")
+
+                    currentTeam = nameTEAM
+                    
+                    var teamNavName = document.getElementById("teamLogoName")
+                    teamNavName.innerHTML = nameTEAM
+
+                    
+                    // return TRUE that current user is coach of current team being checked
+                    coachVerification = true
+                    console.log(coachVerification)
+
+                    var waiting = setTimeout(redirectPage, 3500);
+
+                    
+                    // window.location.replace("homepage.html");
+                    
+                }
+            }
+
+            if (!coachVerification) {
+        
+                var matchTeam = firebase.database().ref('02players/');
+                matchTeam.on('value', (snapshot) => {
+        
+                    const data2 = snapshot.val();
+                    // console.log(data2)
+        
+                    var userIDList = Object.getOwnPropertyNames(data2)
+                    // console.log(data2)
+        
+                    for (i in userIDList) {
+                        var userIDAccess = userIDList[i]
+        
+                        var userTeamList = Object.getOwnPropertyNames(data2[userIDAccess])
+                        var userTeam = data2[userIDAccess][userTeamList]
+        
+                        if (userIDAccess == uid) {
+                            console.log("match found, exiting function")
+                            console.log("current team is " + userTeam)
+
+                            currentTeam = userTeam
+
+                            var teamNavName = document.getElementById("teamLogoName")
+                            teamNavName.innerHTML = userTeam
+
+                            var waiting = setTimeout(redirectPage, 3500);
+
+
+                            window.location.replace("homepage.html");
+
+                            return
+                            
+                        } 
+                        // else {
+                        //     console.log(uid + " not a match")
+                        // }    
+                    }
+                });
+                console.log(coachVerification)
+
+            } else {
+                console.log("no user found")
+            }
+        });
+
+    // ...
     } else {
-      // User is signed out
-      // ...
+        console.log("no user signed in")
+
+    // User is signed out
+    // ...
     }
+    // console.log(coachVerification)
+
 });
 
+function addTeamPhoto(team) {
+
+    var teamPhotoFile = document.getElementById("teamPhoto").files[0]
+    console.log(teamPhotoFile)
+    console.log("here")
+
+    var name = 'teamPhoto'
+    var metadata = { contentType: teamPhotoFile.type }
 
 
-function createUser() {
+    var storageRef = firebase.storage().ref('Teams/' + team + '/teamPhoto');
+    var task = storageRef.child(name).put(teamPhotoFile, metadata)
 
-    var emailSignUp = document.getElementById("emailS").value
-    var passwordSignUp = document.getElementById("passwordS").value
-    console.log(emailSignUp, passwordSignUp)
-    
-    firebase.auth().createUserWithEmailAndPassword(emailSignUp, passwordSignUp).then((userCredential) => {
+
+
+
+}
+
+function createNewTeam(coachName, coachEmail, coachPassword, teamName) {
+
+    firebase.auth().createUserWithEmailAndPassword(coachEmail, coachPassword).then((userCredential) => {
         // Signed in 
         var user = userCredential.user;
-        console.log(user)
-        window.location.href = "myTeam.github.io/roster.html";
+        var uID = user.uid;
+        console.log(uID)
+        console.log(coachName, coachEmail, coachPassword, teamName)
+
+        firebase.database().ref('teams/' + teamName + '/01head coach').update({
+
+            name: coachName,
+            contactInfo: coachEmail,
+            userID: uID,
+    
+        });
+
+
+        addTeamPhoto(teamName)
+        console.log("Data set to database")
+
+        
+
+
+    }).catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorCode, errorMessage)
+        console.log(errorCode)
+        console.log(errorMessage)
+        });
+} 
+
+function redirectPage() {
+    window.location.replace("homepage.html");
+}
+
+function coachSignUp() {
+
+    var coachName = document.getElementById("coachName").value
+    var emailSignUp = document.getElementById("emailCS").value
+    var passwordSignUp = document.getElementById("passwordCS").value
+    var newTeamName = document.getElementById("teamName").value
+
+
+    console.log(coachName, emailSignUp, passwordSignUp, newTeamName)
+    createNewTeam(coachName, emailSignUp, passwordSignUp, newTeamName)
+    console.log("signed up")
+    // redirectPage()
+}
+
+
+function addPlayerTeamPair(playerID, team) {
+
+    firebase.database().ref('02players/' + playerID).set({
+        team: team,
+    });
+    console.log("player set to database")
+}
+
+
+function addPlayerToTeam(playerID, playerEmail) {
+    var playerName = document.getElementById("namePS").value
+    var playerAge = document.getElementById("agePS").value
+    var playerPosition = document.getElementById("positionPS").value
+    var playerNumber = document.getElementById("numberPS").value
+    var playerTeam = document.getElementById("teamSelectDiv").value
+    var playerHeight = document.getElementById("teamSelectDiv").value
+    var playerWeight = document.getElementById("teamSelectDiv").value
+
+
+    
+    // console.log(playerName, playerTeam, playerPosition, playerID, playerEmail)
+
+
+
+    firebase.database().ref('teams/' + playerTeam + '/02players/' + playerName).set({
+        name: playerName,
+        age: playerAge,
+        position: playerPosition,
+        contactInfo: playerEmail,
+        number: playerNumber,
+        userID: playerID
+
+    });
+    // console.log("Data set to database")
+
+    addPlayerTeamPair(playerID, playerTeam)
+
+
+    
+}
+
+
+
+function playerSignUp() {
+
+    var playerEmail = document.getElementById("emailPS").value
+    var playerPassword = document.getElementById("passwordPS").value
+
+    
+    firebase.auth().createUserWithEmailAndPassword(playerEmail, playerPassword).then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        // var playerTeam = document.getElementById("teamSelectDiv").value
+
+        var uid = user.uid;
+        console.log(uid)
+
+        addPlayerToTeam(uid, playerEmail)
+        window.location.replace("homepage.html");
+        
         // ...
     }).catch((error) => {
         var errorCode = error.code;
@@ -79,7 +340,9 @@ function createUser() {
     
 }
 
-function checkLogin() {
+
+
+function signIn() {
 
     var emailLogin = document.getElementById("emailL").value
     var passwordLogin = document.getElementById("passwordL").value
@@ -90,10 +353,9 @@ function checkLogin() {
     // Signed in
     var user = userCredential.user;
     console.log(user)
-    window.location.href = "myTeam.github.io/roster.html";
+    window.location.replace("homepage.html");
 
 
-    // ...
     })
     .catch((error) => {
         var errorCode = error.code;
@@ -106,7 +368,8 @@ function checkLogin() {
 function signOut() {
     firebase.auth().signOut().then(function() {
         console.log('Signed Out');
-        window.location.href = "myTeam.github.io/index.html";
+        window.location.replace("index.html");
+
 
     }, function(error) {
         console.error('Sign Out Error', error);
@@ -119,73 +382,10 @@ function signOut() {
 
 
 
-
-
-
-// function checkLogin() {
-
-//     var e = document.getElementById("emailL").value
-//     var p = document.getElementById("passwordL").value
-
-//     //
-
-
+// function getTimeEpoch() {
+    //     x = new Date().getTime().toString(); 
+    //     console.log(x)                            
+    // }
     
-
-        
     
-//     if (u in users) {
-//         console.log("user exists")
-
-//         if (users[u] == p) {
-//             console.log("logged in")
-
-//             // similar behavior as an HTTP redirect
-//             // window.location.replace("http://stackoverflow.com");
-
-//             // similar behavior as clicking on a link
-//             // window.location.href = "/fileUploads.html";
-//         }
-//         else {
-//             console.log("incorrect password")
-//         }
-//     }
-//     else {
-//         console.log("user does not exist")
-//     }
-//     document.getElementById("loginForm").reset()
-// }
-
-// function createUser() {
-//     var u = document.getElementById("usernameS").value
-//     var e = document.getElementById("emailS").value
-//     var p = document.getElementById("passwordS").value
-
-//     firebase.database().ref('users/' + u).set({
-//         username: u,
-//         email: e,
-//         password: p
-//     });
-//     console.log("Data set to database")
-
-
-//     console.log(u, e, p)
-//     document.getElementById("signupForm").reset()
-// }
-
-// function createUser() {
-
-
-//     var addUser = document.getElementById('usernameS').value
-//     var addEmail = document.getElementById("emailS").value
-//     var addPassword = document.getElementById('passwordS').value
-
-
-//     firebase.database().ref('users/' + addUser).set({
-//         username: addUser,
-//         email: addEmail,
-//         password: addPassword
-//     });
-//     console.log("Data set to database")
-// } 
 

@@ -15,91 +15,65 @@
 
     
 </head>
-<body>
-
-
-
-
-    <div class="container">
-
-        <h1>Firebase File Upload</h1>
-
-        <div class=" row">
-            <div class="col s4">
-                <label class="btn green" for="imageFileBtn" style="cursor: pointer;">Upload Image/Any File</label>
-                <input type="file" accept="image/*" name="image" id="imageFileBtn"  onchange="addImage()" style="display: none;">
-                <!-- <p><progress id="uploader" value="50" max="100" style="background-color: red;">0%</progress></p> -->
-            </div>
-            <div class="col s4">
-                <label class="btn green" for="videoFileBtn" style="cursor: pointer;">Upload Video</label>
-                <input type="file" accept="video/*" name="image" id="videoFileBtn"  onchange="addVideo()" style="display: none;">
-                <!-- <p><progress id="uploader" value="50" max="100" style="background-color: red;">0%</progress></p> -->
-            </div>
-            <div class="col s4">
-                <label class="btn green" for="pdfFileButton" style="cursor: pointer;">Upload PDF</label>
-                <input type="file" accept="application/pdf" name="image" id="pdfFileButton"  onchange="addPDF()" style="display: none;">
-                <!-- <p><progress id="uploader" value="50" max="100" style="background-color: red;">0%</progress></p> -->
-            </div>
-            
+<body >
+    
+    <nav class="cyan darken-3">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo right blue-text" id="teamLogoName" style="padding-right: 2%;"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="homepage.html">Homepage</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="fileUploads.html" class="" >Files</a></li>
+                <li><a href="#" class="btn blue darken-4 modal-trigger col s1" onclick="signOut()">Sign Out</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- <h6>Recent Upload:</h4>
-        <p id="recentUpload"></p> -->
-        
-        <div class="divider"></div>
-        
-        <div class="row">
-            <h5>Files Displayed Below</h5>
-            <a class="btn purple" onclick="getImages()">Display Images</a>
-            <div id="imageDisplay"></div>
-        </div>
+    <ul class="sidenav cyan darken-2" id="mobile-demo">
+        <li><a href="homepage.html">Homepage</a></li>
+        <li><a href="roster.html">Roster</a></li>
+        <li><a href="fileUploads.html">Files</a></li>
+        <li><a href="#" class="btn blue darken-1 modal-trigger col s1" onclick="signOut()">Sign Out</a></li>
+    </ul>
+    
+    <div id="uploadDiv"></div>
+    <div id="coachUploadDiv"></div>
 
-        <br>
 
-        <div class="row">
-            <a class="btn purple" onclick="getVideos()">Display Videos</a>
-            <div id="videoDisplay"></div>
-        </div>
+  
 
-        <br>
 
-        <div class="row">
-            <a class="btn purple" onclick="getPDFs()">Get PDFs</a>
-            <div id="pdfDisplay"></div>
-        </div>
 
-        </div>
-    </div>
-
-    <!-- <div class="divider"></div>
     <div class="row">
-        <h5>Set</h5>
-        <a class="btn red" onclick="writeData()" style="cursor: pointer;">Set Data</a>
-        <h5>Get</h5>
-        <a class="btn blue" onclick="getData()" style="cursor: pointer;">Get Data</a> 
+        
+        <div class="col 9l 9m " style="width: 80%;">
+            <div class="row">
+                <h4 style="margin-left: 2ch;">Images</h3>
+                <div id="imageDisplay"></div>
+            </div>
+      
+        </div>
+        <div class="col 3l 3m" style="width: 20%; padding-left: 3.5%;">
+            <h4>PDFs</h4>
+            <ul id="pdfDisplay"></ul>
+
+        </div>
     </div>
-
-    <br>
-    <div class="divider"></div>
-    <br> -->
-
+        
     
         
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-    <!-- https://cdnjs.com/libraries/firebase -->
-    <!-- This didn't work, not sure why -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
-    <script src='/IA/myTeam.github.io/Script/upload.js'></script>
+    <script src='/IA/myTeam.github.io/script/upload.js'></script>
+
 </body>
 </html>
     

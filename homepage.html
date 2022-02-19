@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='style/calendar.css'> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='style/home.css'>
+
+
+</head>
+<body>
+
+    <nav class="cyan darken-3">
+        <div class="nav-wrapper">
+            <!-- <a href="#!" class="brand-logo right"><i class="material-icons right">cloud</i></a> -->
+            <a href="#!" class="brand-logo right blue-text" id="teamLogoName" style="padding-right: 2%;"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="left hide-on-med-and-down">
+                <li><a href="homepage.html">Homepage</a></li>
+                <li><a href="roster.html">Roster</a></li>
+                <li><a href="fileUploads.html" class="" >Files</a></li>
+                <li><a href="#" class="btn blue darken-4 modal-trigger col s1" onclick="signOut()">Sign Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav cyan darken-2" id="mobile-demo">
+        <li><a href="homepage.html">Homepage</a></li>
+        <li><a href="roster.html">Roster</a></li>
+        <li><a href="fileUploads.html">Files</a></li>
+        <li><a href="#" class="btn blue darken-1 modal-trigger col s1" onclick="signOut()">Sign Out</a></li>
+    </ul>
+
+    <div class="responsive-img" id="currentTeamParallax" >
+    </div>
+
+
+
+
+    <div class="container">
+        <h1 class="center">Welcome to your home page!</h1>
+    </div>
+
+
+        <div class="container" id="addEventDiv" style="margin-bottom: 10%;">
+            
+        </div>
+
+
+        <div class="container">
+            <h4>Schedule</h3>
+                <ul class="collapsible" id="teamEventList">
+                    
+                </ul>
+        </div>
+        
+
+
+
+    
+
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>    
+    <script src='/IA/myTeam.github.io/script/calendar.js'></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script>
+    <script src='script/home.js'></script>
+</body>
+</html>
